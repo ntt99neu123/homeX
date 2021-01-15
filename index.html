@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-firestore.js"></script>
+    <!-- firebase.firestore() -->
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // HomeX web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyB8W1m4YwGAJ9uNM---pkCnVyAq5voulck",
+            authDomain: "homex-8a675.firebaseapp.com",
+            databaseURL: "https://homex-8a675.firebaseio.com",
+            projectId: "homex-8a675",
+            storageBucket: "homex-8a675.appspot.com",
+            messagingSenderId: "249396943299",
+            appId: "1:249396943299:web:9bab663eceaff33b1c0576",
+            measurementId: "G-SZ7ST56779"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home X</title>
+    <!-- <script src="js/test.js"></script> -->
+    <script src="js/components.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/model.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/registerAuth.css">
+    <link rel="stylesheet" href="./css/loginAuth.css">
+
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+
+    <!-- Tên:<input id="name" type="text" name="name">
+    <button type="submit" onclick="nameSubmitHandler()" >submit</button>
+
+    Lưu tên:<input id="saveName" type="text" name="saveName" onchange="nameChangeHandler()">  -->
+
+    <!-- <nav class="nav-wrap">
+        <div class="nav-detail">
+            <div class="container-fluid">
+                <div class="row special-offers">
+                    <span class="col-md-12 col-xs-12 offer-1">Đăng kí thành viên Home X - Tích điểm thưởng và nhận
+                        ưu đãi</span>
+                    <span class="col-md-12 col-xs-12 offer-2">Nhanh chóng,tiện lợi và an toàn. Đăng ký liền tay rinh
+                        ngay quyền lời</span>
+                </div>
+            </div>
+        </div>
+        </nav>
+        <div class="body-wrap-details-info">
+        <h2 class="h2-create">
+            Cài đặt tài khoản
+        </h2>
+        <form id="info-form" class="info-room-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="input-wrapper-owner">
+                                <label>Tên</label>
+                                <input type="text">
+                        </div>
+                        <div class="input-wrapper-owner">
+                                <label>Họ và tên đệm</label>
+                                <input type="text">
+                        </div>
+                        <div class="input-wrapper-owner">
+                                <label >Email</label>
+                                <span></span>
+                        </div>
+                        <div class="input-wrapper-owner">
+                                <label>Số điện thoại</label>
+                                <input type="number">
+                        </div>
+                        <div class="input-wrapper-owner">
+                                <label>Địa chỉ</label>
+                                <input type="text">
+                        </div>
+                        <div class="input-wrapper-owner">
+                                <label>Ngày sinh</label>
+                                <input type="text">
+                        </div>
+                        <div class="input-wrapper-owner">
+                                <label>Giới tính</label>
+                                <span>
+                                    <input type="radio">
+                                    <span>Nam</span>
+                                </span><span>
+                                        <input type="radio">
+                                        <span>Nữ</span>
+                                    </span>
+                                    <span>
+                                            <input type="radio">
+                                            <span>Khác</span>
+                                        </span>
+
+                        </div>
+                        <div class="input-wrapper-owner">
+                            
+                                <label>Giới thiệu bản thân</label>
+                                <textarea name="introduce-self" id="" cols="30" rows="10"></textarea>
+                        </div>
+
+
+
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                    </div>
+                    
+                </div>
+            </div>
+        </form>
+        
+        </div>
+        <div class="foot-wrap">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 col-xs-12 footer-logo-info-link">
+                    <a href="#" id="home-page-link" class="logo">
+                        <img class="logo-footer" src="./image/H--ME X-logo-black.png">
+        
+                    </a>
+                </div>
+                <div class="col-md-6 info-home-X">
+                    <div class="hotline-info">
+                        <span><i class="fas fa-mobile-alt"></i></span>
+                        <span>Hotline: 0869.672.231</span>
+                    </div>
+                    <div class="email-info">
+                        <span><i class="fas fa-envelope"></i></span>
+                        <span>homeX@gmail.com</span>
+                    </div>
+                    <div class="address-info">
+                        <span><i class="fas fa-globe"></i></span>
+                        <span>VP Hà Nội: 22 Thành Công, HN</span>
+                    </div>
+                </div>
+                <div class="col-md-4 link-info">
+                    <a href="#" class="link-social">
+                        <span><i class="fab fa-facebook-square"></i></span>
+        
+                    </a>
+                    <a href="#" class="link-social">
+                        <span><i class="fab fa-twitter-square"></i></span>
+        
+                    </a>
+                    <a href="#" class="link-social">
+                        <span><i class="fab fa-instagram"></i></span>
+        
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 copyright-home-X">
+                    <span>2019<i class="far fa-copyright"></i>Home X. Bản quyền thuộc về công ty TNHH Home X Việt Nam.
+                        Mọi hành vi sao chép đều là
+                        phạm pháp nếu không có sự cho phép bằng văn bản của chúng tôi</span>
+                </div>
+            </div>
+        </div> -->
+
+
+
+
+        
+        
+        
+        
+      
+
+
+    
+    
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
